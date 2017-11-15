@@ -5,12 +5,12 @@ local log = require "log"
 
 local auth = {}
 local users = {}
-local client = client.handler()
+local cli = client.handler()
 
 local SUCC = {ok = true}
 local FAIL = {ok = false}
 
-function client:signup(args)
+function cli:signup(args)
 	log("signup userid = %s", args.userid)
 	if users[args.userid] then
 		return FAIL
@@ -20,7 +20,7 @@ function client:signup(args)
 	end
 end
 
-function client:signin(args)
+function cli:signin(args)
 	log("signin  userid = %s", args.userid)
 	if users[args.userid] then
 		self.userid = args.userid
@@ -31,7 +31,7 @@ function client:signin(args)
 	end
 end
 
-function client:ping()
+function cli:ping()
 	log("ping")
 end
 
